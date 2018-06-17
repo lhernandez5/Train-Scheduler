@@ -1,3 +1,58 @@
+.card card-primary.add{
+    background-color: rgb(181, 204, 225);
+    width: 100%;
+}
 .card-body.form{
-    margin-top: 40%;
+    width: 100%;
+    padding: 3%;
+    background-color: aliceblue;
+
+}
+body{
+    background-image: url(../images/gplaypattern.png);
+}
+.text-center{
+    font-size: 50px;
+}
+.text-center.smaller{
+    font-size: 20px;
+    color:rgb(99, 93, 93);
+}
+.jumbotron{
+    margin-top:5%; 
+    margin-bottom: 5%;
+    width: 100%;
+}
+.card-heading{
+    background-color: aliceblue;
+    padding: 2%;
+    text-align: center;
+}
+.card-body{
+    padding: 2%;
+    background-color: aliceblue;
+}
+.card card-primary add{
+    width: 100%;
+}
+th{
+    background-color: rgba(138, 142, 157, 0.749);
+    color: white;
+}
+label{
+    font-weight: bold;
+    color: rgba(50, 50, 51, 0.749);
+
+}
+td{
+    font-weight: bold;
+    color: rgba(50, 50, 51, 0.749);
+
+}
+.btn btn-primary{
+    text-align: center;
+}
+strong{
+    color: rgba(50, 50, 51, 0.749);
+
 }

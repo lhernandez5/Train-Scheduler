@@ -17,24 +17,20 @@
 
     <!-- Moment.js Reference -->
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-
-</head>
-
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 <body>
 
     <!-- Train Tracker -->
     <div class="container">
 
         <!-- Jumbotron -->
-        <div class="jumbotron" style="background-color: rgb(194, 35, 88); color: white">
+        <div class="jumbotron" style="background-color: rgb(148, 188, 221); color: white">
             <h1 class="text-center">Train Times Management</h1>
-            <h3 class="text-center">A Comprehensive Directory of Train Hours</h3>
+            <h3 class="text-center smaller">A Directory of Train Hours</h3>
         </div>
 
         <div class="row">
-
             <div class="col-lg-12">
-
                 <!-- Current Trains-->
                 <div class="card card-primary">
                     <div class="card-heading">
@@ -61,15 +57,18 @@
                 <br>
                 <br>
             </div>
+            </div>
+            <div class="row">
             <!-- Add Train  -->
-            <div class="card card-primary">
+            <div class="col-lg-12">
+            <div class="card card-primary add">
                 <div class="card-heading">
                     <h3 class="card-title">
                         <strong>Add Train</strong>
                     </h3>
                 </div>
                 <div class="card-body form">
-
+                    
                     <!-- Entry Form -->
                     <form>
                         <div class="form-group row">
@@ -88,13 +87,19 @@
                             <label for="frequency-input">Frequency(min)</label>
                             <input class="form-control" id="frequency-input" type="text">
                         </div>
+                        <div class="row">
+                                <div class="col-md-5"></div>
+                            <div class="col-md-2">
                         <button class="btn btn-primary" id="add-train-btn" type="submit">Submit</button>
+                        <div class="col-md-5"></div>
+                    </div>
+                    </div>
                     </form>
 
                 </div>
 
             </div>
-
+            </div>
         </div>
 
     </div>
@@ -102,7 +107,7 @@
     </div>
 
     </div>
-
+<br><br><br><br>
     <!-- JavaScript -->
     <script src="assets/javascript/app.js"></script>
 
