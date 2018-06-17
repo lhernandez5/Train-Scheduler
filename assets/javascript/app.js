@@ -2,8 +2,8 @@
 // Steps to complete:
 
 // 1. Initialize Firebase
-// 2. Create button for adding new employees - then update the html + update the database
-// 3. Create a way to retrieve employees from the employee database.
+// 2. Create button for adding new trains - then update the html + update the database
+// 3. Create a way to retrieve trains from the train database.
 // 4. Create a way to calculate the months worked. Using difference between start and current time.
 //    Then use moment.js formatting to set difference in months.
 // 5. Calculate Total billed
@@ -23,7 +23,7 @@
 
   var database = firebase.database();
 
-  // 2. Button for adding Employees
+  // 2. Button for adding trains
   $("#add-train-btn").on("click", function(event) {
     event.preventDefault();
   
@@ -33,7 +33,7 @@
     var trainStart = $("#first-train-input").val().trim();
     var trainFrequency = $("#frequency-input").val().trim();
     console.log("1 TRAIN-START"+trainStart);
-    // Creates local "temporary" object for holding employee data
+    // Creates local "temporary" object for holding train data
     var newTrain = {
       name: trainName,
       destination: destinationRole,
@@ -41,7 +41,7 @@
       frequency: trainFrequency
     };
   
-    // Uploads employee data to the database
+    // Uploads train data to the database
     database.ref().push(newTrain);
   
     // Logs everything to console
@@ -60,7 +60,7 @@
     $("#frequency-input").val("");
   });
   
-  // 3. Create Firebase event for adding employee to the database and a row in the html when a user adds an entry
+  // 3. Create Firebase event for adding train to the database and a row in the html when a user adds an entry
   database.ref().on("child_added", function(childSnapshot, prevChildKey) {
   
     // console.log(childSnapshot.val());
@@ -80,7 +80,6 @@
     // Assumptions
     var tFrequency = trainFrequency;
     console.log(trainFrequency);
-    console.log("tFrequency"+tFrequency);
 
     // Time is 3:30 AM
     // var firstTime = trainStartPretty;
