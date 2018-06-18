@@ -5,8 +5,7 @@
 .card-body.form{
     width: 100%;
     padding: 3%;
-    background-color: aliceblue;
-
+    background-color: rgb(209, 231, 250);
 }
 body{
     background-image: url(../images/gplaypattern.png);
@@ -24,13 +23,14 @@ body{
     width: 100%;
 }
 .card-heading{
-    background-color: aliceblue;
+    background-color: rgb(209, 231, 250);
     padding: 2%;
     text-align: center;
 }
 .card-body{
     padding: 2%;
-    background-color: aliceblue;
+    background-color: rgb(209, 231, 250);
+    border-bottom: 5px solid rgb(104, 95, 95);
 }
 .card card-primary add{
     width: 100%;
