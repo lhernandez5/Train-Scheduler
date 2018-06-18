@@ -51,6 +51,7 @@ td{
 }
 .btn btn-primary{
     text-align: center;
+    background-color: rgba(138, 142, 157, 0.749);
 }
 strong{
     color: rgba(50, 50, 51, 0.749);

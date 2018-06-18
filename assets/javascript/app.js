@@ -95,7 +95,7 @@
     // Next Train
     var nextTrain = moment().add(tMinutesTillTrain, "minutes");
     console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
-    var nextTrainTime=moment(nextTrain).format("hh:mm")
+    var nextTrainTime=moment(nextTrain).format("hh:mm A")
   
     // Add each train's data into the table
     $("#train-table > tbody").append("<tr><td>" + trainName + "</td><td>" + destinationRole + "</td><td>" +
