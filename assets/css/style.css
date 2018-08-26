@@ -1,4 +1,4 @@
-.card card-primary.add{
+.card.card-primary.add{
     background-color: rgb(181, 204, 225);
     width: 100%;
 }
@@ -42,12 +42,10 @@ th{
 label{
     font-weight: bold;
     color: rgba(50, 50, 51, 0.749);
-
 }
 td{
     font-weight: bold;
     color: rgba(50, 50, 51, 0.749);
-
 }
 .btn btn-primary{
     text-align: center;
