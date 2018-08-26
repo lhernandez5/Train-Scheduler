@@ -46,20 +46,14 @@
   //Create Firebase event for adding train to the database and a row in the html when a user adds an entry
   database.ref().on("child_added", function(childSnapshot, prevChildKey) {
   
-    // console.log(childSnapshot.val());
+    console.log(childSnapshot.val());
   
     // Store everything into a variable.
     var trainName = childSnapshot.val().name;
     var destinationRole = childSnapshot.val().destination;
     var trainStart = childSnapshot.val().start;
     var trainFrequency = childSnapshot.val().frequency;
-  
-    // Train Info
-    console.log(trainName);
-    console.log(destinationRole);
-    console.log(trainStart);
-    console.log(trainFrequency);
-  
+
     // Assumptions
     var tFrequency = trainFrequency;
 
