@@ -21,7 +21,7 @@
     var destinationRole = $("#destination-input").val().trim();
     var trainStart = $("#first-train-input").val().trim();
     var trainFrequency = $("#frequency-input").val().trim();
-    console.log("1 TRAIN-START"+trainStart);
+
     // Creates local "temporary" object for holding train data
     var newTrain = {
       name: trainName,
@@ -32,12 +32,6 @@
   
     // Uploads train data to the database
     database.ref().push(newTrain);
-  
-    // Logs everything to console
-    // console.log("name"+newTrain.name);
-    // console.log(newTrain.destination);
-    // console.log(newTrain.start);
-    // console.log(newTrain.frequency);
   
     // Alert
     alert("Train successfully added");
