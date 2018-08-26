@@ -68,13 +68,9 @@
   
     // Assumptions
     var tFrequency = trainFrequency;
-    console.log(trainFrequency);
-
-    // Time is 3:30 AM
-    // var firstTime = trainStartPretty;
 
     // First Time (pushed back 1 year to make sure it comes before current time)
-    var firstTimeConverted = moment(trainStart, "hh:mm").subtract(1, "years");
+    var firstTimeConverted = moment(trainStart, "HH:mm").subtract(1, "years");
 
     // Current Time
     var currentTime = moment();
