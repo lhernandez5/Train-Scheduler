@@ -30,26 +30,26 @@ $("#add-train-btn").on("click", function(event) {
     .val()
     .trim();
 
-  var re = /^(\d{1,2}):(\d{2})([ap]m)?$/;
+  var timeCheck = /^(\d{1,2}):(\d{2})([ap]m)?$/;
 
   if (trainStart != "") {
-    if ((regs = trainStart.match(re))) {
-      if (regs[3]) {
+    if ((checked = trainStart.match(timeCheck))) {
+      if (checked[3]) {
         // 12-hour value between 1 and 12
-        if (regs[1] < 1 || regs[1] > 12) {
-          alert("Invalid value for hours: " + regs[1]);
+        if (checked[1] < 1 || checked[1] > 12) {
+          alert("Invalid value for hours: " + checked[1]);
           return false;
         }
       } else {
         // 24-hour value between 0 and 23
-        if (regs[1] > 23) {
-          alert("Invalid value for hours: " + regs[1]);
+        if (checked[1] > 23) {
+          alert("Invalid value for hours: " + checked[1]);
           return false;
         }
       }
       // minute value between 0 and 59
-      if (regs[2] > 59) {
-        alert("Invalid value for minutes: " + regs[2]);
+      if (checked[2] > 59) {
+        alert("Invalid value for minutes: " + checked[2]);
         return false;
       }
     } else {
@@ -62,21 +62,21 @@ $("#add-train-btn").on("click", function(event) {
   }
   if (trainFrequency != "") {
     if (isNaN(trainFrequency)) {
-      alert("You need to provide a number for the FREQUENCY for the train.");
+      alert("You need to provide a number for the frequency for the train.");
       return false;
     }
   } else if (trainFrequency === "") {
-    alert("You need to provide a FREQUENCY for the train.");
+    alert("You need to provide a frequency for the train.");
     return false;
   }
   if (trainName === "") {
-      alert("You need to provide a name for your train.");
-      return false;
+    alert("You need to provide a name for your train.");
+    return false;
   }
   if (destinationRole === "") {
     alert("You need to provide a destination for your train.");
     return false;
-}
+  }
 
   // Creates local "temporary" object for holding train data
   var newTrain = {
@@ -127,7 +127,7 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
   // Time apart (remainder)
   var tRemainder = diffTime % tFrequency;
-  console.log("this is the remainder"+tRemainder);
+  console.log("this is the remainder" + tRemainder);
 
   // Minute Until Train
   var tMinutesTillTrain = tFrequency - tRemainder;
