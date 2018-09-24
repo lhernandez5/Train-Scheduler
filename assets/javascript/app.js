@@ -32,23 +32,23 @@ $("#add-train-btn").on("click", function(event) {
 
   var re = /^(\d{1,2}):(\d{2})([ap]m)?$/;
 
-  if(trainStart != '') {
-    if(regs = trainStart.match(re)) {
-      if(regs[3]) {
+  if (trainStart != "") {
+    if ((regs = trainStart.match(re))) {
+      if (regs[3]) {
         // 12-hour value between 1 and 12
-        if(regs[1] < 1 || regs[1] > 12) {
+        if (regs[1] < 1 || regs[1] > 12) {
           alert("Invalid value for hours: " + regs[1]);
           return false;
         }
       } else {
         // 24-hour value between 0 and 23
-        if(regs[1] > 23) {
+        if (regs[1] > 23) {
           alert("Invalid value for hours: " + regs[1]);
           return false;
         }
       }
       // minute value between 0 and 59
-      if(regs[2] > 59) {
+      if (regs[2] > 59) {
         alert("Invalid value for minutes: " + regs[2]);
         return false;
       }
@@ -56,35 +56,41 @@ $("#add-train-btn").on("click", function(event) {
       alert("Invalid time format: " + trainStart);
       return false;
     }
+  } else if (trainStart === "") {
+    alert("Need to input time");
+    return false;
   }
-  if (isNaN(trainFrequency) & trainFrequency!='') {
-      alert("You need to provide a FREQUENCY for the train.");
+  if (trainFrequency != "") {
+    if (isNaN(trainFrequency)) {
+      alert("You need to provide a number for the FREQUENCY for the train.");
       return false;
     }
-  
+  } else if (trainFrequency === "") {
+    alert("You need to provide a FREQUENCY for the train.");
+    return false;
+  }
 
-    // Creates local "temporary" object for holding train data
-    var newTrain = {
-      name: trainName,
-      destination: destinationRole,
-      start: trainStart,
-      frequency: trainFrequency
-    };
+  // Creates local "temporary" object for holding train data
+  var newTrain = {
+    name: trainName,
+    destination: destinationRole,
+    start: trainStart,
+    frequency: trainFrequency
+  };
 
-    // Uploads train data to the database
-    database.ref().push(newTrain);
+  // Uploads train data to the database
+  database.ref().push(newTrain);
 
-    // Alert
-    alert("Train successfully added");
+  // Alert
+  alert("Train successfully added");
 
-    // Clears all of the text-boxes
-    $("#train-name-input").val("");
-    $("#destination-input").val("");
-    $("#first-train-input").val("");
-    $("#frequency-input").val("");
+  // Clears all of the text-boxes
+  $("#train-name-input").val("");
+  $("#destination-input").val("");
+  $("#first-train-input").val("");
+  $("#frequency-input").val("");
 
-    return true;
-  
+  return true;
 });
 
 //Create Firebase event for adding train to the database and a row in the html when a user adds an entry
@@ -105,23 +111,23 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
   // Current Time
   var currentTime = moment();
-  // console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+  console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
 
   // Difference between the times
   var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
-  // console.log("DIFFERENCE IN TIME: " + diffTime);
+  console.log("DIFFERENCE IN TIME: " + diffTime);
 
   // Time apart (remainder)
   var tRemainder = diffTime % tFrequency;
-  // console.log("this is the remainder"+tRemainder);
+  console.log("this is the remainder"+tRemainder);
 
   // Minute Until Train
   var tMinutesTillTrain = tFrequency - tRemainder;
-  // console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
+  console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
 
   // Next Train
   var nextTrain = moment().add(tMinutesTillTrain, "minutes");
-  // console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
+  console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
   var nextTrainTime = moment(nextTrain).format("hh:mm A");
 
   // Add each train's data into the table
