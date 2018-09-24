@@ -69,6 +69,14 @@ $("#add-train-btn").on("click", function(event) {
     alert("You need to provide a FREQUENCY for the train.");
     return false;
   }
+  if (trainName === "") {
+      alert("You need to provide a name for your train.");
+      return false;
+  }
+  if (destinationRole === "") {
+    alert("You need to provide a destination for your train.");
+    return false;
+}
 
   // Creates local "temporary" object for holding train data
   var newTrain = {
