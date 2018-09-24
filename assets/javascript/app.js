@@ -30,12 +30,39 @@ $("#add-train-btn").on("click", function(event) {
     .val()
     .trim();
 
-  if (isNaN(trainStart) & isNaN(trainFrequency)) {
-    alert("You need to provide a TIME for the train like HH:mm.");
+  var re = /^(\d{1,2}):(\d{2})([ap]m)?$/;
+
+  if(trainStart != '') {
+    if(regs = trainStart.match(re)) {
+      if(regs[3]) {
+        // 12-hour value between 1 and 12
+        if(regs[1] < 1 || regs[1] > 12) {
+          alert("Invalid value for hours: " + regs[1]);
+          return false;
+        }
+      } else {
+        // 24-hour value between 0 and 23
+        if(regs[1] > 23) {
+          alert("Invalid value for hours: " + regs[1]);
+          return false;
+        }
+      }
+      // minute value between 0 and 59
+      if(regs[2] > 59) {
+        alert("Invalid value for minutes: " + regs[2]);
+        return false;
+      }
+    } else {
+      alert("Invalid time format: " + trainStart);
+      return false;
+    }
   }
-  if (isNaN(trainFrequency)) {
-    alert("You need to provide a FREQUENCY for the train like HH:mm.");
-  } else {
+  if (isNaN(trainFrequency) & trainFrequency!='') {
+      alert("You need to provide a FREQUENCY for the train.");
+      return false;
+    }
+  
+
     // Creates local "temporary" object for holding train data
     var newTrain = {
       name: trainName,
@@ -55,7 +82,9 @@ $("#add-train-btn").on("click", function(event) {
     $("#destination-input").val("");
     $("#first-train-input").val("");
     $("#frequency-input").val("");
-  }
+
+    return true;
+  
 });
 
 //Create Firebase event for adding train to the database and a row in the html when a user adds an entry
