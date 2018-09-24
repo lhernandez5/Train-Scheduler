@@ -60,6 +60,7 @@ $("#add-train-btn").on("click", function(event) {
     alert("Need to input time");
     return false;
   }
+  // var frequencyCheck = /^([1-9]|60)$/;
   if (trainFrequency != "") {
     if (!isNaN(trainFrequency)) {
       if(trainFrequency==='0'){
