@@ -61,7 +61,13 @@ $("#add-train-btn").on("click", function(event) {
     return false;
   }
   if (trainFrequency != "") {
-    if (isNaN(trainFrequency)) {
+    if (!isNaN(trainFrequency)) {
+      if(trainFrequency==='0'){
+        alert("You need to provide a frequency higher than 0.");
+      return false;
+      }
+      
+    } else if (isNaN(trainFrequency)) {
       alert("You need to provide a number for the frequency for the train.");
       return false;
     }
@@ -127,7 +133,7 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
   // Time apart (remainder)
   var tRemainder = diffTime % tFrequency;
-  console.log("this is the remainder" + tRemainder);
+  console.log("Remainder: " + tRemainder);
 
   // Minute Until Train
   var tMinutesTillTrain = tFrequency - tRemainder;
