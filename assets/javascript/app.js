@@ -30,25 +30,11 @@ $("#add-train-btn").on("click", function(event) {
     .val()
     .trim();
 
-  var timeCheck = /^(\d{1,2}):(\d{2})?$/;
+  var timeCheck = /^(((([0-1]{0,1}?\d|2[0-3])):?[0-5][0-9])|(24:?00))/;
 
-  if (trainStart != "") {
-    if ((checked = trainStart.match(timeCheck))) {
-      console.log(checked);
-      // 24-hour value between 0 and 23
-      if (checked[1] > 23) {
-        alert("Invalid value for hours: " + checked[1]);
-        return false;
-      }
-      // minute value between 0 and 59
-      if (checked[2] > 59) {
-        alert("Invalid value for minutes: " + checked[2]);
-        return false;
-      }
-    } else {
-      alert("Invalid time format: " + trainStart);
-      return false;
-    }
+  if ((trainStart != "") & !trainStart.match(timeCheck)) {
+    alert("You need to provide a vaild time.");
+    return false;
   } else if (trainStart === "") {
     alert("Need to input time");
     return false;
@@ -56,15 +42,14 @@ $("#add-train-btn").on("click", function(event) {
 
   var frequencyCheck = /^([1-9]|[1-5]\d|60)$/;
 
-  if (trainFrequency != "") {
-    if (!trainFrequency.match(frequencyCheck)) {
-      alert("You need to provide a frequency that is betwen 0-60 minutes.");
-      return false;
-    }
+  if ((trainFrequency != "") & !trainFrequency.match(frequencyCheck)) {
+    alert("You need to provide a frequency that is betwen 0-60 minutes.");
+    return false;
   } else if (trainFrequency === "") {
     alert("You need to provide a frequency for the train.");
     return false;
   }
+
   //checks that the trainName is not empty
   if (trainName === "") {
     alert("You need to provide a name for your train.");
