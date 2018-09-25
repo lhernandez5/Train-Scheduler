@@ -30,22 +30,15 @@ $("#add-train-btn").on("click", function(event) {
     .val()
     .trim();
 
-  var timeCheck = /^(\d{1,2}):(\d{2})([ap]m)?$/;
+  var timeCheck = /^(\d{1,2}):(\d{2})?$/;
 
   if (trainStart != "") {
     if ((checked = trainStart.match(timeCheck))) {
-      if (checked[3]) {
-        // 12-hour value between 1 and 12
-        if (checked[1] < 1 || checked[1] > 12) {
-          alert("Invalid value for hours: " + checked[1]);
-          return false;
-        }
-      } else {
-        // 24-hour value between 0 and 23
-        if (checked[1] > 23) {
-          alert("Invalid value for hours: " + checked[1]);
-          return false;
-        }
+      console.log(checked);
+      // 24-hour value between 0 and 23
+      if (checked[1] > 23) {
+        alert("Invalid value for hours: " + checked[1]);
+        return false;
       }
       // minute value between 0 and 59
       if (checked[2] > 59) {
@@ -60,26 +53,24 @@ $("#add-train-btn").on("click", function(event) {
     alert("Need to input time");
     return false;
   }
-  // var frequencyCheck = /^([1-9]|60)$/;
+
+  var frequencyCheck = /^([1-9]|[1-5]\d|60)$/;
+
   if (trainFrequency != "") {
-    if (!isNaN(trainFrequency)) {
-      if(trainFrequency==='0'){
-        alert("You need to provide a frequency higher than 0.");
-      return false;
-      }
-      
-    } else if (isNaN(trainFrequency)) {
-      alert("You need to provide a number for the frequency for the train.");
+    if (!trainFrequency.match(frequencyCheck)) {
+      alert("You need to provide a frequency that is betwen 0-60 minutes.");
       return false;
     }
   } else if (trainFrequency === "") {
     alert("You need to provide a frequency for the train.");
     return false;
   }
+  //checks that the trainName is not empty
   if (trainName === "") {
     alert("You need to provide a name for your train.");
     return false;
   }
+  //checks that the destinationRole is not empty
   if (destinationRole === "") {
     alert("You need to provide a destination for your train.");
     return false;
